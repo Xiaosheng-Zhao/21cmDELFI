@@ -1,4 +1,4 @@
-# pydelfi
+# 21cmDELFI
 
 **21cmDELFI**. This package is heavily borrowed from the [pydelfi](https://github.com/justinalsing/pydelfi) package with minor changes. The implemented methods are described in detail in [Xiaosheng Zhao et al. 2021a](https://arxiv.com/) and  [Xiaosheng Zhao et al. 2021](https://arxiv.org/abs/2105.03344). The [pydelfi](https://github.com/justinalsing/pydelfi) package are mainly described in [Alsing, Charnock, Feeney and Wandelt 2019](https://arxiv.org/abs/1903.00007), and are based closely on [Papamakarios, Sterratt and Murray 2018](https://arxiv.org/pdf/1805.07226.pdf), [Lueckmann et al 2018](https://arxiv.org/abs/1805.09294) and [Alsing, Wandelt and Feeney, 2018](https://academic.oup.com/mnras/article-abstract/477/3/2874/4956055?redirectedFrom=fulltext). Please cite these papers if you use this code!
 
