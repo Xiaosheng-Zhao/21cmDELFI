@@ -372,7 +372,7 @@ class Delfi():
         #return sampler.get_chain(flat=True),sampler.get_log_prob(flat=True) 
         return chain, weights, log_prob ,sampler.get_chain(flat=True),sampler.get_log_prob(flat=True)  
         #return sampler.get_chain(flat=True),sampler.get_log_prob(flat=True),chain,sampler.get_chain(flat=True),sampler.get_log_prob(flat=True)
-    def emcee_sample_single(self, log_target=None, x0=None, burn_in_chain=100, main_chain=1000,n=2):
+    def emcee_sample_single_train(self, log_target=None, x0=None, burn_in_chain=100, main_chain=1000,path=None):
         for i in range(self.n_ndes):
         #for i in range(1):
             # default log target
@@ -402,22 +402,11 @@ class Delfi():
             # pull out the log probabilities
             #log_prob, _ = np.unique(sampler.get_log_prob(flat=True), axis=0, return_counts=True)
             log_prob, weights2 = np.unique(sampler.get_log_prob(flat=True), axis=0, return_counts=True)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/po_%d.npy'%(i+n),(chain,weights,log_prob,weights2))
-            with open('/scratch/zxs/delfi_fast/emcee_sample/single/po_{:d}.pkl'.format(i+n), 'wb') as f:
+            with open(path+'po_mock_nde{:d}.pkl'.format(i), 'wb') as f:
                 pickle.dump((sampler.get_chain(flat=True),sampler.get_log_prob(flat=True)),f)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/weights_%d.npy'%(i+n),weights)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/log_prob_%d.npy'%(i+n),log_prob)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/weights2_%d.npy'%(i+n),weights2)
-            #bnsa=np.array(self.nde[0].bns)
-            #print (bnsa)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/maf.npy',bnsa)
-            #data=np.array([5.47712,2.30101])
-            #for pa in chain:
-            #    u=self.nde[0](input_parameters=pa, input_data=data).u
-            #    print (u)
         return 0
 
-    def emcee_sample_single2(self, log_target=None, x0=None, burn_in_chain=100, main_chain=1000,nde=0,n=2):
+    def emcee_sample_single_test(self, log_target=None, x0=None, burn_in_chain=100, main_chain=1000,nde=0):
         for i in range(nde,nde+1):
         #for i in range(1):
             # default log target
@@ -447,19 +436,8 @@ class Delfi():
             #log_prob, _ = np.unique(sampler.get_log_prob(flat=True), axis=0, return_counts=True)
             log_prob, weights2 = np.unique(sampler.get_log_prob(flat=True), axis=0, return_counts=True)
             #np.save('/scratch/zxs/delfi_fast/emcee_sample/single2/po_%d.npy'%(n),(chain,weights,log_prob,weights2))
-            with open('/scratch/zxs/delfi_fast/emcee_sample/single2/po_{:d}.pkl'.format(n), 'wb') as f:
+            with open(path+'/po_test_nde{:d}.pkl'.format(nde), 'wb') as f:
                 pickle.dump((sampler.get_chain(flat=True),sampler.get_log_prob(flat=True)),f)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single2/po_%d.npy'%(n),(chain,weights,sampler.get_chain(flat=True),sampler.get_log_prob(flat=True)))
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/weights_%d.npy'%(i+n),weights)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/log_prob_%d.npy'%(i+n),log_prob)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/single/weights2_%d.npy'%(i+n),weights2)
-            #bnsa=np.array(self.nde[0].bns)
-            #print (bnsa)
-            #np.save('/scratch/zxs/delfi_fast/emcee_sample/maf.npy',bnsa)
-            #data=np.array([5.47712,2.30101])
-            #for pa in chain:
-            #    u=self.nde[0](input_parameters=pa, input_data=data).u
-            #    print (u)
         return 0
 
 
