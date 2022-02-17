@@ -22,7 +22,7 @@ class Delfi():
                  Finv = None, theta_fiducial = None, param_limits = None, param_names = None, nwalkers = 100, \
                  posterior_chain_length = 1000, proposal_chain_length = 100, \
                  rank = 0, n_procs = 1, comm = None, red_op = None, \
-                 show_plot = True, results_dir = "", n_noise=1, progress_bar = True, input_normalization = None,
+                 show_plot = True, results_dir = "", n_noise=10, progress_bar = True, input_normalization = None,
                  graph_restore_filename = "graph_checkpoint", restore_filename = "restore.pkl", restore = False, save = True):
         
         # Input validation
