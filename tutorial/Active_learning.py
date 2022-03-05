@@ -19,27 +19,37 @@ import random
 from mpi4py import MPI
 
 restore=False
-#one set of parameters could correspond to multiple realizations of noise
+# One set of parameters could correspond to multiple (n_noise) realizations of noise
 n_noise=1
+# Number of spline points to be used in the summaries, the same param in 'tpower.py'
+NSplinePoints = 8
+# List of co-eval redshifts
+redshift = [7.668188,8.003182,8.357909,8.716638,9.108561,9.524624,9.966855,10.437500,10.939049,11.474274]
 
+# 21cmFAST Simulator
 def simulator(theta,seed,simulator_args,batch=1,n_noise=n_noise):
     p21c.config['direc'] = "./data/cache"
-    nc = 66
-    redshift = [7.668188,8.003182,8.357909,8.716638,9.108561,9.524624,9.966855,10.437500,10.939049,11.474274]
+    HII_DIM = 66
+    BOX_LEN = 100
+
     coeval8 = p21c.run_coeval(
     redshift = redshift,
     write=False,
-    user_params = {"HII_DIM": 66, "BOX_LEN": 100},
+    user_params = {"HII_DIM": HII_DIM, "BOX_LEN": BOX_LEN},
     cosmo_params = p21c.CosmoParams(SIGMA_8=0.815,hlittle=0.678,OMm=0.308,OMb=0.048425,POWER_INDEX=0.968),
     astro_params = p21c.AstroParams({"HII_EFF_FACTOR":pow(10,theta[1]),"ION_Tvir_MIN":theta[0]}),
     random_seed=seed)
-    ps = np.concatenate((get_power(coeval8[0],nc,n_noise,redshift[0]),get_power(coeval8[1],nc,n_noise,redshift[1]),get_power(coeval8[2],nc,n_noise,redshift[2]),get_power(coeval8[3],nc,n_noise,redshift[3]),get_power(coeval8[4],nc,n_noise,redshift[4]),get_power(coeval8[5],nc,n_noise,redshift[5]),get_power(coeval8[6],nc,n_noise,redshift[6]),get_power(coeval8[7],nc,n_noise,redshift[7]),get_power(coeval8[8],nc,n_noise,redshift[8]),get_power(coeval8[9],nc,n_noise,redshift[9])),axis=1)
+    ps = np.concatenate((get_power(coeval8[0],HII_DIM,BOX_LEN,n_noise,redshift[0]),get_power(coeval8[1],HII_DIM,BOX_LEN,n_noise,redshift[1]),get_power(coeval8[2],HII_DIM,BOX_LEN,n_noise,redshift[2]),get_power(coeval8[3],HII_DIM,BOX_LEN,n_noise,redshift[3]),get_power(coeval8[4],HII_DIM,BOX_LEN,n_noise,redshift[4]),get_power(coeval8[5],HII_DIM,BOX_LEN,n_noise,redshift[5]),get_power(coeval8[6],HII_DIM,BOX_LEN,n_noise,redshift[6]),get_power(coeval8[7],HII_DIM,BOX_LEN,n_noise,redshift[7]),get_power(coeval8[8],HII_DIM,BOX_LEN,n_noise,redshift[8]),get_power(coeval8[9],HII_DIM,BOX_LEN,n_noise,redshift[9])),axis=1)
     return ps
 
 # Simulator arguments
 simulator_args = None
+
+# Data compressor
 def compressor(d, compressor_args):
     return d
+
+# Compressor arguments
 compressor_args = None
 
 # Define the priors parameters
@@ -48,9 +58,13 @@ upper = np.array([6,2.398])
 prior = priors.Uniform(lower, upper)
 theta_fiducial = np.array([5.47712125,2.30103])
 
+# Initialize the random seed
 seed = 4101110
-nout = 80
 
+# The dimension of the final summary
+nout = NSplinePoints*len(redshift)
+
+# Load the prepared mock data which can be re-simulated with the simulator
 data=np.load('/scratch/zxs/delfi_fast/data/21cmdelfi_mock/back_1003/bright_hera.npy')
 compressed_data = compressor(data, compressor_args)
 

@@ -5,7 +5,6 @@ from astropy import units as un
 from astropy.cosmology import Planck15
 from py21cmsense import GaussianBeam, Observatory, Observation, PowerSpectrum, hera
 
-n2=28 #the maximum number of k bins which are valid (not None)
 def noise_generator(k_21,delta_21,z):
     
     frequency=1420/(1+z)
@@ -27,22 +26,26 @@ def noise_generator(k_21,delta_21,z):
     
     power_std = np.array(sensitivity.calculate_sensitivity_1d())
     k_noise=np.array(sensitivity.k1d*Planck15.h)
+    index_noinf=np.where(power_std!=np.inf)
+    power_std = power_std[index_noinf]
+    k_noise = k_noise[index_noinf]
 
     return k_noise, power_std
         
         
-def get_power(filename, nc,n_noise,z0):
+def get_power(filename, nc,box_len,n_noise,z0):
     data = filename
-    delta1 = filename.brightness_temp[:, :, :]-np.mean(filename.brightness_temp[:, :, :])
+    #delta1 = filename.brightness_temp[:, :, :]-np.mean(filename.brightness_temp[:, :, :])
+    delta1 = filename.brightness_temp
 
     N_tot = nc**3
-    V = (100)**3 #the length should be a free parameter
+    V = (box_len)**3
     delta = delta1*V/N_tot
 
     space_ps = np.abs(np.fft.fftn(delta))
     space_ps *= space_ps
 
-    delta_k = 2*np.pi/100
+    delta_k = 2*np.pi/box_len
 
     k_factor = 1.35
     k_first_bin_ceil = delta_k
@@ -66,7 +69,7 @@ def get_power(filename, nc,n_noise,z0):
             i-=nc
         k_x = i * delta_k
         for j in range(0,nc):
-            if (i!=0 and j!=0):
+            if (i!=0 and j!=0): # Remove the mode where the k_{\perp}=0,
                 l = j
                 if j>=nc/2:
                     j-=nc
@@ -98,8 +101,8 @@ def get_power(filename, nc,n_noise,z0):
             p_box[ct] /= (in_bin_ct[ct])
             pp.append(p_box[ct])
             err.append(p_box[ct]/np.sqrt(in_bin_ct[ct]))
+    # Unit 1 / Mpc 
     k = np.array(kp, dtype=float)
-    ## unit 1 / Mpc 
     
     foreground_cut = 0.15
     shot_noise_cut = 1.0
@@ -113,7 +116,7 @@ def get_power(filename, nc,n_noise,z0):
     
     P_21 = np.array(pp, dtype=float)
     
-    ###################generate the noise from 21cmSense
+    # Generate the noise from 21cmSense
     error2=noise_generator(k,P_21,z0)
     
     splined_error=interpolate.splrep(error2[0],np.log10(error2[1]),s=0)
