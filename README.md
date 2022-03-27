@@ -4,7 +4,7 @@
 
 **Installation:**
 
-The code is tested with python3 (3.6 and 3.7) and the [tensorflow](https://www.tensorflow.org) (1.14 and 1.15) in a separate conda environment. Other dependencies:<br>
+The code is tested with python3 (3.7) and the [tensorflow](https://www.tensorflow.org) (1.14 and 1.15) in a separate conda environment. Other dependencies:<br>
 [getdist](http://getdist.readthedocs.io/en/latest/)<br>
 [emcee](http://dfm.io/emcee/current/) (>=3.0.2)<br>
 [tqdm](https://github.com/tqdm/tqdm)<br>
