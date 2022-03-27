@@ -8,11 +8,11 @@ The code is tested with python3 (3.6 and 3.7) and the [tensorflow](https://www.t
 [getdist](http://getdist.readthedocs.io/en/latest/)<br>
 [emcee](http://dfm.io/emcee/current/) (>=3.0.2)<br>
 [tqdm](https://github.com/tqdm/tqdm)<br>
-[mpi4py](https://mpi4py.readthedocs.io/en/stable/) (if MPI is required)<br>
 
 For the active learning with the 21 cm power spectrum, you should have the following two dependencies:<br>
 [21cmFAST](https://github.com/andreimesinger/21cmFAST) <br>
 [21cmSense](https://github.com/steven-murray/21cmSense) <br>
+[mpi4py](https://mpi4py.readthedocs.io/en/stable/) (if MPI is required)<br>
 
 You can install the dependencies and this package with,
 ```
