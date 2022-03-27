@@ -14,13 +14,11 @@ For the active learning with the 21 cm power spectrum, you should have the follo
 [21cmSense](https://github.com/steven-murray/21cmSense) <br>
 [mpi4py](https://mpi4py.readthedocs.io/en/stable/) (if MPI is required)<br>
 
-You can install the dependencies and this package with,
+To install the dependencies and this package with, you can first run 
 ```
 pip install tensorflow==1.14
-pip install git+https://github.com/Xiaosheng-Zhao/21cmDELFI.git
 ```
-or install the dependencies and then clone the repo. From the top-level directory run `python setup.py install`
-
+then clone the repo and run `python setup.py install` from the top-level directory. 
 
 **Documentation and tutorials:** 
 
