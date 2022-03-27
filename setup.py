@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 import sys
 
-setup(name='pydelfi',
+setup(name='21cmDELFI',
       version='v0.1',
       description='LFI in TensorFlow',
       author='Xiaosheng-Zhao',

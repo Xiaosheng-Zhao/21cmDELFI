@@ -1,34 +1,34 @@
 # 21cmDELFI
 
-**21cmDELFI**. This package is for the implicit likelihood inference with 21cm statistics like the power spectrum. It is heavily borrowed from the [pydelfi](https://github.com/justinalsing/pydelfi) package with minor changes. The implemented methods are described in detail in and  [Zhao et al. 2022a](https://arxiv.org/abs/2105.03344) [Zhao et al. 2021b](https://arxiv.com/). The [pydelfi](https://github.com/justinalsing/pydelfi) package are mainly described in [Alsing, Charnock, Feeney and Wandelt 2019](https://arxiv.org/abs/1903.00007), and are based closely on [Papamakarios, Sterratt and Murray 2018](https://arxiv.org/pdf/1805.07226.pdf), [Lueckmann et al 2018](https://arxiv.org/abs/1805.09294) and [Alsing, Wandelt and Feeney, 2018](https://academic.oup.com/mnras/article-abstract/477/3/2874/4956055?redirectedFrom=fulltext). Please cite these papers if you use this code!
+**21cmDELFI**. This package is for the density estimation likelihood inference (DELFI) with 21 cm statistics like the power spectrum. The implemented methods are described in detail in [Zhao et al. 2022a](https://arxiv.org/abs/2105.03344) and [Zhao et al. 2022b](https://arxiv.com/). The main module is heavily borrowed from the [pydelfi](https://github.com/justinalsing/pydelfi) package, mainly described in [Alsing, Charnock, Feeney and Wandelt 2019](https://arxiv.org/abs/1903.00007), with minor changes in `delfi.py`.  The validation of the posteriors are partly borrowed from [galpo](https://github.com/smucesh/galpro/), which is based on [S. Mucesh et al. 2021](https://academic.oup.com/mnras/article/502/2/2770/6105325). The rest is based on [Diana Harrison et al. 2015](https://academic.oup.com/mnras/article/451/3/2610/1186451). If you use this code, please consider citing the corresponding these papers.
 
 **Installation:**
 
-The code is in python3 and can be installed as follows:<br>
-
-This code  has the following dependencies:<br>
-[tensorflow](https://www.tensorflow.org) (<=1.15) <br> 
+The code is tested with python3 (3.6 and 3.7) and the [tensorflow](https://www.tensorflow.org) (1.14 and 1.15) in a separate conda environment. Other dependencies:<br>
 [getdist](http://getdist.readthedocs.io/en/latest/)<br>
 [emcee](http://dfm.io/emcee/current/) (>=3.0.2)<br>
 [tqdm](https://github.com/tqdm/tqdm)<br>
 [mpi4py](https://mpi4py.readthedocs.io/en/stable/) (if MPI is required)<br>
 
-For the active learning with the 21 cm power spectrum, we should have the following two dependencies:<br>
+For the active learning with the 21 cm power spectrum, you should have the following two dependencies:<br>
 [21cmFAST](https://github.com/andreimesinger/21cmFAST) <br>
 [21cmSense](https://github.com/steven-murray/21cmSense) <br>
 
-You can install the requirements and this package with,
+You can install the dependencies and this package with,
 ```
+pip install tensorflow==1.14
 pip install git+https://github.com/Xiaosheng-Zhao/21cmDELFI.git
 ```
-or alternatively, pip install the requirements and then clone the repo and run `python setup.py install`
+or install the dependencies and then clone the repo. From the top-level directory run `python setup.py install`
 
 
 **Documentation and tutorials:** 
 
-If you want to implement your own 21cm signal, please check the scripts in the "tutural" directory, where you can replace the data with your own.<br> 
+If you want to implement your own 21cm signal, please check the scripts in the `tutural` directory, where you can replace the data with your own.<br> 
 
-In [this repository](https://github.com/Xiaosheng-Zhao/DELFI-3DCNN), we present the code used to train a 3DCNN [(Zhao et al. 2022a)](https://arxiv.org/abs/2105.03344) as the data compressor.
+For validation of both marginal and joint posteriors, you can check the `Diagnostics.ipynb` under the `tutural` directory.
 
-The main documentation from [pydelfi](https://github.com/justinalsing/pydelfi) can be found **[here](https://pydelfi.readthedocs.io/en/latest/)**.
+You may also want to compress the 21 cm images into different low-dimensional summaries. For example, in [this repository](https://github.com/Xiaosheng-Zhao/DELFI-3DCNN), we present the code used to train a 3DCNN [(Zhao et al. 2022a)](https://arxiv.org/abs/2105.03344) as the data compressor.
+
+The main documentation of [pydelfi](https://github.com/justinalsing/pydelfi) can be found **[here](https://pydelfi.readthedocs.io/en/latest/)**.
 
