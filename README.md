@@ -30,7 +30,7 @@ If you want to implement your own 21cm signal, please check the scripts in the `
 
 For validation of both marginal and joint posteriors, you can check the `Diagnostics.ipynb` under the `tutural` directory.
 
-For the active learning, we add a free parameter `n_noise` in `delfi.py`under the `pydelfi` directory. This new parameter describes the number of realizations of noise for each simulation of signal. You can refer to `Active_learning.py` under the `tutorial` directory to play with your own application of active learning.
+For the active learning, we add a free parameter `n_noise` in `delfi.py` under the `pydelfi` directory. This new parameter describes the number of realizations of noise for each simulation of signal. You can refer to `Active_learning.py` under the `tutorial` directory to play with your own application of active learning.
 
 You may also want to compress the 21 cm images into different low-dimensional summaries. For example, in [this repository](https://github.com/Xiaosheng-Zhao/DELFI-3DCNN), we present the code used to train a 3DCNN [(Zhao et al. 2022b)](https://arxiv.org/abs/2105.03344) as the data compressor.
 
