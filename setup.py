@@ -14,7 +14,7 @@ setup(name='21cmDELFI',
           "getdist",
           "emcee>=v3.0.2",
           "mpi4py",
-          "scipy",
+          "scipy<v1.8.0",
           "tqdm"
       ])
 
