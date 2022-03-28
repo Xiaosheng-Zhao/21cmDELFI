@@ -4,7 +4,7 @@
 
 **Installation:**
 
-The code is tested with python3 (3.7) and the [tensorflow](https://www.tensorflow.org) (1.14) in a separate conda environment. Other dependencies:<br>
+The code is tested with python3 (3.7) and the [tensorflow](https://www.tensorflow.org) (1.15) in a separate conda environment. Other dependencies:<br>
 [getdist](http://getdist.readthedocs.io/en/latest/)<br>
 [emcee](http://dfm.io/emcee/current/) (>=3.0.2)<br>
 [tqdm](https://github.com/tqdm/tqdm)<br>
@@ -12,7 +12,7 @@ The code is tested with python3 (3.7) and the [tensorflow](https://www.tensorflo
 
 To install the dependencies and this package, you can first run
 ```
-pip install tensorflow==1.14
+pip install tensorflow==1.15
 ```
 then clone the repo and run `python setup.py install` from the top-level directory.
 
