@@ -20,7 +20,7 @@ Another suggeted way to install mpi4py if some problem happens:
 conda install -c anaconda mpi4py
 ```
 
-For the active learning (under development) with the 21 cm power spectrum, you should have the following two dependencies:<br>
+For the active learning (under development) with the 21 cm power spectrum, the impletated example has the other two dependencies:<br>
 [21cmFAST](https://github.com/andreimesinger/21cmFAST) <br>
 [21cmSense](https://github.com/steven-murray/21cmSense) <br>
 
