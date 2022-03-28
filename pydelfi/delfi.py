@@ -683,7 +683,7 @@ class Delfi():
             if plot==True:
                 print('Sampling approximate posterior...')
                 x0 = self.posterior_samples[np.random.choice(np.arange(len(self.posterior_samples)), p=self.posterior_weights.astype(np.float32)/sum(self.posterior_weights), replace=False, size=self.nwalkers),:]
-                self.posterior_samples, self.posterior_weights, self.log_posterior_values = \
+                self.posterior_samples, self.posterior_weights, self.log_posterior_values,_,_ = \
                     self.emcee_sample(x0=x0, main_chain=self.posterior_chain_length)
                 print('Done.')
 
