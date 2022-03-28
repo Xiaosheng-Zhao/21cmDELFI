@@ -14,7 +14,11 @@ To install the dependencies and this package, you can first run
 ```
 pip install tensorflow==1.15
 ```
-then clone the repo and run `python setup.py install` from the top-level directory.
+then clone the repo and run `python setup.py install` from the top-level directory.<br>
+Another suggeted way to install mpi4py if some problem happens: 
+```
+conda install -c anaconda mpi4py
+```
 
 For the active learning (under development) with the 21 cm power spectrum, you should have the following two dependencies:<br>
 [21cmFAST](https://github.com/andreimesinger/21cmFAST) <br>
