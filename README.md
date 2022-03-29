@@ -33,7 +33,7 @@ For validation of both marginal and joint posteriors, you can check the `Diagnos
 Comparing to the [pydelfi](https://github.com/justinalsing/pydelfi) package, the `delfi.py` in this repo has the following minor changes:
 1. Add a free parameter `n_noise` under the `pydelfi` directory for the active learning, . This new parameter describes the number of realizations of noise for each simulation of signal. You can refer to `Active_learning.py` under the `tutorial` directory to play with your own application of active learning.
 2. Add two `emcee_sample` functions that can output the posterior samples from individual neural density estimator in an ensemble.
-3. Output the full chains together with the corresponding log probabilities, in order to evaluate the probabilistic HPD calibration (for the validation of posteriors1).
+3. Output the full chains together with the corresponding log probabilities, in order to evaluate the probabilistic HPD calibration (for the validation of posteriors).
 4. For the `log_likelihood_staked` function, we watch out for overflow if the likelihood has extreme number, in which case you can force it's type to be `np.float64`.
 
 You may also want to compress the 21 cm images into different low-dimensional summaries. For example, in [this repository](https://github.com/Xiaosheng-Zhao/DELFI-3DCNN), we present the code used to train a 3DCNN [(Zhao et al. 2022b)](https://arxiv.org/abs/2105.03344) as the data compressor.
