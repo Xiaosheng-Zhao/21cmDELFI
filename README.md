@@ -30,7 +30,7 @@ If you want to implement your own 21cm signal, please check the scripts in the `
 
 For validation of both marginal and joint posteriors, you can check the `Diagnostics.ipynb` under the `tutural` directory.
 
-Comparing to the `pydelfi` package, the `delfi.py` in this repo has the following minor changes:
+Comparing to the [pydelfi](https://github.com/justinalsing/pydelfi) package, the `delfi.py` in this repo has the following minor changes:
 1. Add a free parameter `n_noise` under the `pydelfi` directory for the active learning, . This new parameter describes the number of realizations of noise for each simulation of signal. You can refer to `Active_learning.py` under the `tutorial` directory to play with your own application of active learning.
 2. Add two `emcee_sample` functions that can output the posterior samples from individual neural density estimator in an ensemble.
 3. Output the full chains together with the corresponding log probabilities, in order to evaluate the probabilistic HPD calibration.
