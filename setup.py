@@ -6,7 +6,7 @@ import sys
 setup(name='21cmDELFI',
       version='v0.1',
       description='Application in 21 cm with LFI in TensorFlow',
-      author='Xiaosheng-Zhao',
+      author='Justin Alsing, Xiaosheng-Zhao',
       url='https://github.com/Xiaosheng-Zhao/21cmDELFI',
       packages=find_packages(),
       install_requires=[
