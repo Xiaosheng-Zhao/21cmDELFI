@@ -5,7 +5,6 @@ This package is for the density estimation likelihood inference (DELFI) with 21 
 <img width="600" src="21cmdelfi.gif"/img>
 </p>
 <p align = "center">
-Samples generated from the model.
 </p>
 
 **Update 2023.10.26**
