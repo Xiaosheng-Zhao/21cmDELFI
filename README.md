@@ -9,7 +9,7 @@ This package is for the density estimation likelihood inference (DELFI) with 21 
 
 **Update 2023.10.26**
 
-[Kymatio](https://github.com/kymatio/kymatio) is required to install for the analysis from solid harmonic wavelet scattering transform (WST) with DELFI ([Zhao et al. 2023](https://arxiv.org/abs/2310.17602)). Check the `tutural` directory for scripts to calculate solid harmonic WST as training data.
+[Kymatio](https://github.com/kymatio/kymatio) is required to install for the analysis from solid harmonic wavelet scattering transform (WST) with DELFI ([Zhao et al. 2023](https://arxiv.org/abs/2310.17602)). Check the `tutural` directory for scripts to calculate solid harmonic WST as training data. Moreover, we developed a [tool](https://github.com/suicee/MI4StatsEval), led by Ce Sui, using mutual information for the comparison of varied summary statistics, including solid harmonic WST and bispectrum.
 
 **Installation:**
 
