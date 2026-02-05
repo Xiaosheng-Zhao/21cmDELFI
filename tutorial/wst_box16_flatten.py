@@ -21,13 +21,14 @@ L=4
 integral_powers = [0.5,1.0, 2.0,3,4]
 
 # Number of intergral powers to be used
-q=len(integral_powers)
+#q=len(integral_powers)
+q=3 # use the first three q as example
 
 # Take the logarithm of coefficients, average over L and integral_powers  
 def s12_flatten(data):
     return np.average(np.log2(data[:,0:(L+1),0:q]),axis=1)
 
-# Similar to s12, but handle the negative values by keeping the sign but taking log of the magnitude; I did not take the first value, integral_powers = 0.5 (data[1:])
+# Similar to s12, but handle the negative values by keeping the sign but taking log of the magnitude; I did not take the first value, integral_powers = 0.5 (data[1:]) and 1.0 (around 0 for mean-subtracted 21 cm field)
 def s0_flatten(data):
     for ii in range(1,len(data)):
             if data[ii]>0:
@@ -36,7 +37,7 @@ def s0_flatten(data):
                 data[ii]=-np.log2(np.abs(data[ii]))
             else:
                 data[ii]=0
-    return data[1:]
+    return data[2:] 
 
 # Function to output the summary statistics (flattened one) for all samples
 def summary(J):
