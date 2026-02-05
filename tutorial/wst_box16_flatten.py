@@ -43,7 +43,7 @@ def summary(J):
     coef=[]
     for i in range(tot):
         data_s12=np.load(cache_dir+'s12_L_{:d}_J_{:d}_MNO_{}_num_{:d}.npy'.format(L,J,(M, N, O),i))
-        s12=s12_flatten(data)
+        s12=s12_flatten(data_s12)
 
         data_s0=np.load(cache_dir+'s0_L_{:d}_J_{:d}_MNO_{}_num_{:d}.npy'.format(L,J,(M, N, O),i))
         s0=np.array(s0_flatten(data_s0))
